@@ -1,0 +1,107 @@
+.search {
+    position: relative;
+    width: 361px;
+    height: var(--height-search);
+    background: var(--secondary-006);
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    overflow: hidden;
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+
+    &::before {
+        content: '';
+        width: 1px;
+        height: 60%;
+        background-color: var(--secondary-012);
+        position: absolute;
+        right: var(--width-search-button);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    input {
+        background-color: transparent;
+        caret-color: var(--primary);
+        font-size: 1.6rem;
+        flex: 1;
+        height: 100%;
+        padding-right: 40px;
+    }
+
+    input:not(:placeholder-shown) ~ button {
+        color: var(--secondary-075);
+    }
+
+    .clear,
+    .load {
+        position: absolute;
+        top: 50%;
+        right: calc(var(--width-search-button) + 14px);
+        transform: translateY(-50%);
+        color: var(--secondary-034);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .load {
+        svg {
+            animation: loading 1s linear infinite;
+        }
+    }
+
+    @keyframes loading {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .search-btn {
+        height: var(--height-search);
+        width: var(--width-search-button);
+        border-bottom-right-radius: var(--search-border-radius);
+        border-top-right-radius: var(--search-border-radius);
+        cursor: pointer;
+        color: var(--secondary-034);
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: var(--secondary-003);
+        }
+
+        &:active {
+            background-color: var(--secondary-006);
+        }
+    }
+}
+
+.search-result {
+    width: 361px;
+
+    .search-title {
+        height: 30px;
+        padding: 5px 12px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--secondary-005);
+    }
+}
+
+@media (max-width: 768px) {
+    .search {
+        display: none;
+    }
+
+    .search-result {
+        display: none;
+    }
+}

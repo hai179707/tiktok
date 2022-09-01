@@ -1,0 +1,21 @@
+.container {
+    padding-top: 16px;
+    padding-left: 8px;
+}
+
+.link-container {
+    margin-bottom: 8px;
+
+    .link {
+        color: var(--secondary-05);
+        font-weight: 600;
+        font-size: 1.2rem;
+        line-height: 1.7rem;
+        display: inline-block;
+        margin-right: 6px;
+        margin-top: 5px;
+    }
+    a.link:hover {
+        text-decoration: underline;
+    }
+}

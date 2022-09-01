@@ -1,0 +1,118 @@
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 0px;
+    position: relative;
+    width: 692px;
+    max-width: 90vw;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 1px;
+        transform: scaleY(0.5);
+        background: var(--secondary-02);
+    }
+}
+
+.avatar {
+    img {
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+    }
+}
+
+.post-content {
+    margin-left: 12px;
+    width: 624px;
+    flex: 1 1 624px;
+}
+
+.post-text {
+    margin-right: 114px;
+
+    .user {
+        display: flex;
+    }
+
+    .nickname {
+        font-family: var(--font-nickname);
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        margin-right: 4px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            margin-left: 6px;
+            color: var(--checked-icon-color);
+            width: 1.4rem;
+        }
+    }
+
+    .username {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 3.2rem;
+    }
+
+    .follow-btn {
+        position: absolute;
+        right: 0;
+        top: 28px;
+    }
+
+    .video-desc {
+        line-height: 2.2rem;
+    }
+
+    .partnership {
+        margin-top: 8px;
+    }
+
+    .video-music {
+        font-weight: 600;
+        line-height: 2.2rem;
+        margin-top: 4px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+
+        a {
+            margin-left: 5px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.video-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.video-tag {
+    font-weight: 600;
+    display: inline-block;
+    margin-left: 4px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 1919px) {
+    .video-feed {
+        height: calc(450px + ((100vw - 768px) / 1152) * 100);
+    }
+}

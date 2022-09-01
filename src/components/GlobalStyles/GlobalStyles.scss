@@ -1,0 +1,132 @@
+@import 'normalize.css';
+
+:root {
+    --white: #fff;
+    --primary: #fe2c55;
+    --secondary: rgb(22, 24, 35);
+    --secondary-003: rgba(22, 24, 35, 0.03);
+    --secondary-006: rgba(22, 24, 35, 0.06);
+    --secondary-01: rgba(22, 24, 35, 0.1);
+    --secondary-012: rgba(22, 24, 35, 0.12);
+    --secondary-02: rgba(22, 24, 35, 0.2);
+    --secondary-034: rgba(22, 24, 35, 0.34);
+    --secondary-05: rgba(22, 24, 35, 0.5);
+    --secondary-075: rgba(22, 24, 35, 0.75);
+    --checked-icon-color: rgb(32, 213, 236);
+    --button-hover-background-color: rgba(254, 44, 85, 0.06);
+
+    // font
+    --font-family: 'ProximaNova', sans-serif;
+    --font-nickname: 'SofiaPro', sans-serif;
+
+    // Default layout
+    --default-layout-header-height: 60px;
+    --default-layout-width: 1150px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    color: var(--secondary);
+    overflow-y: overlay;
+}
+
+// scrollbar css
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+
+html ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+input,
+button,
+[tabindex] {
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    font-family: var(--font-family);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+p {
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+// Font
+@font-face {
+    font-family: ProximaNova;
+    src: url('/assets/fonts/Proxima-Nova-Bold.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url('/assets/fonts/Proxima-Nova-Semibold.woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url('/assets/fonts/Proxima-Nova-Regular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: SofiaPro;
+    src: url('/assets/fonts/sofiapro-bold.woff2');
+    font-weight: 700;
+}
+
+// custom tippy tooltip
+
+body {
+    .tippy-box {
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        background-color: rgba(84, 84, 84, 0.92);
+        padding: 4px 0;
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+        top: -8px;
+    }
+}
+
+@media (max-width: 576px) {
+    #root {
+        display: none;
+    }
+}

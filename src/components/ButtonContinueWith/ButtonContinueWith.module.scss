@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    margin-bottom: 16px;
+    color: var(--secondary);
+    font-weight: 600;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding: 11px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    word-break: keep-all;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.icon {
+    left: 12px;
+    font-size: 20px;
+    position: absolute;
+    display: flex;
+}

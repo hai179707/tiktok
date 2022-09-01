@@ -1,0 +1,51 @@
+.wrapper {
+    margin-bottom: 8px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 200ms ease-in-out 0s;
+
+    .title {
+        margin-left: 8px;
+        line-height: 3.2rem;
+    }
+
+    & > span {
+        height: 3.2rem;
+    }
+
+    &:hover {
+        background-color: var(--secondary-003);
+    }
+
+    &.active {
+        color: var(--primary);
+
+        .icon {
+            display: none;
+        }
+
+        .active-icon {
+            display: block;
+        }
+    }
+}
+
+.active-icon {
+    display: none;
+}
+
+@media (max-width: 1071px) {
+    .menu-item {
+        justify-content: center;
+    }
+    .title {
+        display: none;
+    }
+}
