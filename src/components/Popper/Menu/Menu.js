@@ -11,17 +11,22 @@ import Header from "./Header";
 const cx = classNames.bind(styles)
 const defaultFnc = () => { }
 
-function Menu({ children, items = [], hideOnClick = false, onChange = defaultFnc }) {
+function Menu({ children, minWidth, offset = [12, 11], delay = [0, 800], placement = 'bottom-end', items = [], hideOnClick = false, onChange = defaultFnc }) {
     const [history, setHistory] = useState([{ data: items }])
     const current = history[history.length - 1]
 
     const renderItem = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.sub
+            const isMore = !!item.more
             return <MenuItem key={index} data={item} onClick={() => {
                 if (isParent) {
                     setHistory(prev => [...prev, item.sub])
-                } else {
+                }
+                else if (isMore) {
+                    setHistory(prev => [...prev, item.more])
+                }
+                else {
                     onChange(item)
                 }
             }} />
@@ -33,9 +38,9 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFnc
     }
 
     const renderResult = attrs => (
-        <div className={cx('menu-items')} tabIndex="-1" {...attrs}>
+        <div className={cx('menu-items', { [minWidth]: minWidth })} tabIndex="-1" {...attrs}>
             <PopperWrapper>
-                {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                {history.length > 1 && current.data[0].subitem && <Header title={current.title} onBack={handleBack} />}
                 <div className={cx('menu-body')}>{renderItem()}</div>
             </PopperWrapper>
         </div>
@@ -48,10 +53,10 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFnc
     return (
         <div className={cx('wrapper')}>
             <Tippy
-                offset={[12, 11]}
-                delay={[0, 800]}
+                offset={offset}
+                delay={delay}
                 hideOnClick={hideOnClick}
-                placement='bottom-end'
+                placement={placement}
                 interactive
                 render={renderResult}
                 onHide={handleResetMenu}
@@ -67,6 +72,9 @@ Menu.propTypes = {
     items: PropTypes.array.isRequired,
     hideOnClick: PropTypes.bool,
     onChange: PropTypes.func,
+    offset: PropTypes.array,
+    placement: PropTypes.string,
+    delay: PropTypes.array
 }
 
 export default Menu;

@@ -43,3 +43,14 @@
         text-align: center;
     }
 }
+
+.share {
+    &::before {
+        content: '\25be';
+        position: absolute;
+        z-index: 10000;
+        bottom: 68px;
+        font-size: 36px;
+        color: #fff;
+    }
+}

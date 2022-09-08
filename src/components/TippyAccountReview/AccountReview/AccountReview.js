@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Button from "~/components/Button";
 import Image from "~/components/Image";
 import styles from './AccountReview.module.scss';
+import NumberFormat from '~/components/NumberFormat';
 
 const cx = classNames.bind(styles)
 
@@ -26,9 +27,9 @@ function AccountReview({ data }) {
                     <p className={cx('name')}>{`${data.first_name} ${data.last_name}`}</p>
                 </Link>
                 <p className={cx('user-stat')}>
-                    <span className={cx('counts')}>{data.followers_count}</span>
+                    <span className={cx('counts')}><NumberFormat number={data.followers_count} /></span>
                     <span className={cx('label')}>Followers</span>
-                    <span className={cx('counts')}>{data.likes_count}</span>
+                    <span className={cx('counts')}><NumberFormat number={data.likes_count} /></span>
                     <span className={cx('label')}>Likes</span>
                 </p>
             </div>

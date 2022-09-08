@@ -36,10 +36,10 @@ function Video({ data }) {
 
     const handleVolume = (e) => {
         let volume = e.nativeEvent.offsetY / e.target.offsetHeight
-        if (volume < 0.2) {
+        if (volume < 0.1) {
             volume = 0
         }
-        if (volume > 0.8) {
+        if (volume > 0.9) {
             volume = 1
         }
         setVolume(1 - volume)
@@ -52,6 +52,9 @@ function Video({ data }) {
             videoRef.current.pause()
         } else {
             videoRef.current.play()
+            setVolume(1)
+            videoRef.current.muted = false
+            thumbRef.current.style.bottom = `48px`
         }
     }
 
@@ -62,11 +65,11 @@ function Video({ data }) {
             </div>
             <div className={cx('control')}>
                 <div className={cx('volume')}>
-                    {volume && <div className={cx('volume-bar-back')}>
+                    {!!volume && <div className={cx('volume-bar-back')}>
                         <div className={cx('volume-bar')} onClick={handleVolume}></div>
                         <div ref={thumbRef} className={cx('volume-thumb')}></div>
                     </div>}
-                    <div className={cx('icon')} onClick={handleMute} >{volume ? <UnMutedIcon /> : <MutedIcon />}</div>
+                    <div className={cx('icon')} onClick={handleMute} >{!!volume ? <UnMutedIcon /> : <MutedIcon />}</div>
                 </div>
                 <div className={cx('play-btn')} onClick={handlePlay}>
                     {play ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}

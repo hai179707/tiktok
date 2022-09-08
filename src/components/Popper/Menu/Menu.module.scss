@@ -17,6 +17,8 @@
 }
 
 .menu-items {
+    min-width: 223px;
+
     & > div {
         padding-bottom: 8px;
     }
@@ -41,6 +43,32 @@
         &.subitem {
             font-weight: 400;
             font-size: 1.4rem;
+        }
+
+        &.more {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            & > span {
+                display: flex;
+            }
+        }
+    }
+
+    &.share {
+        min-width: 280px;
+
+        ::-webkit-scrollbar {
+            border-radius: 0px;
+            width: 6px;
+        }
+
+        & > div {
+            max-height: 448px;
+            border-radius: 10px;
+            padding-right: 4px;
         }
     }
 }
