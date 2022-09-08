@@ -8,15 +8,24 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useModal } from "~/hooks";
 import Modal from "~/components/Modal";
 import GetApp from "../Modal/GetApp";
+import ShortcutsModal from "../Modal/ShortcutsModal";
 
 const cx = classNames.bind(styles)
 
 function FixedRightBottom() {
     const [showBackToTop, setShowBackToTop] = useState(false)
     const [showApp, getShowApp] = useState(false)
-    const { isShowing, toggle } = useModal();
+    const [showShortcuts, getShowShortcuts] = useState(false)
+    const { isShowing, toggle } = useModal()
 
     useEffect(() => {
+        const isShowShortcuts = Math.floor(Math.random() * 10 + 1)
+
+        if (isShowShortcuts === 5) {
+            getShowShortcuts(true)
+            console.log(isShowShortcuts)
+        }
+
         const handleScroll = () => {
             if (window.scrollY >= 200) {
                 setShowBackToTop(true)
@@ -31,8 +40,18 @@ function FixedRightBottom() {
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
+
+    const closeShortcuts = () => {
+        getShowShortcuts(false)
+    }
     return (
         <div className={cx('wrapper')}>
+            {showShortcuts &&
+                <PopperWrapper className={cx('shortcuts')}>
+                    <div className={cx('close')} onClick={closeShortcuts}><CloseIcon width='1.8rem' /></div>
+                    <ShortcutsModal />
+                </PopperWrapper>
+            }
             <PopperWrapper className={cx('app', { show: showApp })}>
                 <div className={cx('item')}>
                     <span className={cx('icon')}><DesktopIcon /></span>

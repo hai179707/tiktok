@@ -18,12 +18,14 @@ import Logo from './Logo';
 import Modal from '~/components/Modal';
 import { useModal } from '~/hooks';
 import LoginModal from '~/components/Modal/LoginModal';
+import ShortcutsModal from '~/components/Modal/ShortcutsModal';
 
 const cx = classNames.bind(styles)
 
 function Header() {
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || false)
     const { isShowing, toggle } = useModal();
+    const { isShowing: showShortcuts, toggle: toggleShortcuts } = useModal();
 
     useEffect(() => {
         localStorage.setItem('currentUser', currentUser)
@@ -37,7 +39,12 @@ function Header() {
                 window.location.reload();
             }
         }
-        console.log(menuItem)
+        else if (menuItem.type === 'shortcuts') {
+            toggleShortcuts()
+        }
+        else {
+            console.log(menuItem)
+        }
     }
 
     return <header className={cx('wrapper')}>
@@ -90,6 +97,12 @@ function Header() {
                     hide={toggle}
                 >
                     <LoginModal />
+                </Modal>
+                <Modal
+                    isShowing={showShortcuts}
+                    hide={toggleShortcuts}
+                >
+                    <ShortcutsModal />
                 </Modal>
             </div>
 

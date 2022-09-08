@@ -32,5 +32,6 @@ export const MENU_ITEMS = [
     {
         icon: <KeyboardShortcutsIcon />,
         title: 'Keyboard shortcuts',
+        type: 'shortcuts'
     }
 ]
